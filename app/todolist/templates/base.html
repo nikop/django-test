@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>{% block title %}Todo App{% endblock %}</title>
+</head>
+
+<body>
+    <h1>Todo App</h1>
+    <nav>
+        {% block sidebar %}
+        <ul>
+            <li><a href="{% url 'index' %}">Current</a></li>
+            <li><a href="{% url 'past' %}">Past</a></li>
+        </ul>
+        {% endblock %}
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+
+</html>

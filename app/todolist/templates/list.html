@@ -1,0 +1,19 @@
+{% if items %}
+<ul>
+    {% for item in items %}
+    <li>
+        <h3><a href="{% url 'item' item.id %}">{{ item.title }}</a></h3>
+        <p>{{ item.description }}</p>
+        {% if item.done %}
+            Done: {{ item.done }}
+        {% else %}
+            <form action="{% url 'markdone' item.id %}">
+                <input type="submit" value="Mark Done">
+            </form>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No items are available.</p>
+{% endif %}
