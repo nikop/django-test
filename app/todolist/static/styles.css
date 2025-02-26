@@ -8,3 +8,22 @@ nav ul {
     gap: 10px;
     padding: 0;
 }
+
+.form {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: min-content 1fr;
+}
+
+.form > .form_row {
+    display: contents;
+}
+
+.form input, .form textarea {
+    width: 95%;
+}
+
+.form ul.errorlist {
+    margin: 0;
+    color: red;
+}

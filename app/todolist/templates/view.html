@@ -3,4 +3,37 @@
 {% block content %}
 <h1>{{ item.title }}</h1>
 <p>{{ item.description }}</p>
+
+<p>
+    Created: {{ item.added }}<br>
+    {% if item.modified %}
+        Updated: {{ item.modified }}<br>
+    {% endif %}
+    {% if item.done %}
+        Done: {{ item.done }}<br>
+    {% endif %}
+</p>
+
+{% if not item.done %}
+    <form action="{% url 'item' item.id %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="markdone">
+        <input type="submit" value="Mark Done">
+    </form>
+{% endif %}
+
+{% if not item.done %}
+<h2>Edit</h2>
+
+<form class="edit_form" action="{% url 'item' item.id %}" method="post">
+    {% csrf_token %}
+
+    <div class="edit_form">
+        {{ form }}
+    </div>
+
+    <input type="submit" value="Save">
+</form>
+{% endif %}
+
 {% endblock %}

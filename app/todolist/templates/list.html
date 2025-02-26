@@ -7,7 +7,9 @@
         {% if item.done %}
             Done: {{ item.done }}
         {% else %}
-            <form action="{% url 'markdone' item.id %}">
+            <form action="{% url 'item' item.id %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="markdone">
                 <input type="submit" value="Mark Done">
             </form>
         {% endif %}

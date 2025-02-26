@@ -6,21 +6,11 @@
 {% include "./list.html" %}
 
 <h2>Add</h2>
-<form action="{% url 'create' %}" method="post">
+<form action="{% url 'index' %}" method="post">
     {% csrf_token %}
 
-    <div>
-        <label>
-            Title:<br>
-            <input name="title" required>
-        </label>
-    </div>
-
-    <div>
-        <label>
-            Description:<br>
-            <textarea name="description" cols="40" rows="4" required></textarea>
-        </label>
+    <div class="edit_form">
+        {{ form }}
     </div>
 
     <input type="submit" value="Add">
