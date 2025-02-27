@@ -22,6 +22,12 @@
     </form>
 {% endif %}
 
+<form action="{% url 'item' item.id %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="delete">
+    <input type="submit" value="Delete">
+</form>
+
 {% if not item.done %}
 <h2>Edit</h2>
 

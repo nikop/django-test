@@ -48,6 +48,10 @@ def view(request, id: int):
             todo.save()
 
             return HttpResponseRedirect(reverse("index"))
+        elif request.POST["action"] == "delete":
+            todo.delete()
+
+            return HttpResponseRedirect(reverse("index"))
         else:
             form = TodoItemForm(request.POST)
         
